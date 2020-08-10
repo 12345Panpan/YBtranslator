@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>757</width>
+    <height>841</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>10</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="video_id">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>20</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>视频ID</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="mainornot">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>90</y>
+      <width>221</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>指定为主要语言</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="lang_choice">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>90</y>
+      <width>261</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <item>
+     <property name="text">
+      <string>英语en (默认)</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>韩语kor</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>泰语th</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>葡萄牙语pt</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>希腊语el</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>保加利亚语bul</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>芬兰语fin</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>斯洛文尼亚slo</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>法语fra</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>阿拉伯语ara</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>德语de</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>荷兰语nl</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>爱沙尼亚语est</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>捷克语cs</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>瑞典语swe</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>越南语vie</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>日语jp</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>西班牙语spa</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>俄语ru</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>意大利语it</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>波兰语pl</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>丹麦语dan</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>罗马尼亚语rom</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>匈牙利语hul</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="title">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>160</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>标题</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="title_con">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>160</y>
+      <width>541</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="description">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>230</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>描述</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="video_id_con">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>20</y>
+      <width>541</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="desc_con">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>230</y>
+      <width>541</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <underline>false</underline>
+     </font>
+    </property>
+    <property name="backgroundVisible">
+     <bool>false</bool>
+    </property>
+    <property name="centerOnScroll">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="keywords">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>420</y>
+      <width>101</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>关键字</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="key_con">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>420</y>
+      <width>541</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="srt_file">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>490</y>
+      <width>121</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>字幕文件</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="srt_file_con">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>490</y>
+      <width>361</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="choicesrt_button">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>490</y>
+      <width>171</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>选择文件</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="audio_file_con">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>560</y>
+      <width>361</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="choiceaudio_button_">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>560</y>
+      <width>171</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>选择文件</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="audio_file">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>560</y>
+      <width>121</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>音频文件</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="language">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>90</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>语言</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="audio_choice">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>630</y>
+      <width>251</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <item>
+     <property name="text">
+      <string>选填</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>localized_audio</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>audio_description</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>commentary</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="audio_type">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>630</y>
+      <width>121</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>音频类型</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="synthetise">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>710</y>
+      <width>181</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+      <kerning>true</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>翻译生成</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>757</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

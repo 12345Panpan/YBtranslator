@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>638</width>
+    <height>613</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>10</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>10</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>YBTranslator</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="5" column="0" colspan="4">
+     <widget class="QSplitter" name="splitter_6">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QLabel" name="srt_file_2">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>字幕文件</string>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="srt_file_con_2"/>
+      <widget class="QPushButton" name="choicesrt_button_2">
+       <property name="text">
+        <string>选择文件</string>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item row="7" column="0" colspan="2">
+     <widget class="QSplitter" name="splitter_8">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QLabel" name="audio_type_2">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>音频类型</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="audio_choice_2">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <item>
+        <property name="text">
+         <string>选填</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>localized_audio</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>audio_description</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>commentary</string>
+        </property>
+       </item>
+      </widget>
+     </widget>
+    </item>
+    <item row="8" column="0">
+     <spacer name="horizontalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>264</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="4" column="0" colspan="4">
+     <widget class="QSplitter" name="splitter_5">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QLabel" name="keywords_2">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>关键字</string>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="key_con_2"/>
+     </widget>
+    </item>
+    <item row="0" column="0" colspan="4">
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QLabel" name="video_id_2">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>视频ID</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="video_id_con_2">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item row="6" column="0" colspan="4">
+     <widget class="QSplitter" name="splitter_7">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QLabel" name="audio_file_2">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>音频文件</string>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="audio_file_con_2"/>
+      <widget class="QPushButton" name="choiceaudio_button_1">
+       <property name="text">
+        <string>选择文件</string>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item row="2" column="0" colspan="4">
+     <widget class="QSplitter" name="splitter_3">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QLabel" name="title_2">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>标题  </string>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="title_con_2">
+       <property name="tabletTracking">
+        <bool>false</bool>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item row="8" column="1" colspan="2">
+     <widget class="QPushButton" name="synthetise_2">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <italic>false</italic>
+        <bold>true</bold>
+        <underline>false</underline>
+        <strikeout>false</strikeout>
+        <kerning>true</kerning>
+       </font>
+      </property>
+      <property name="text">
+       <string>翻译生成</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="3">
+     <spacer name="horizontalSpacer_3">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>263</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="3" column="0" colspan="4">
+     <widget class="QSplitter" name="splitter_4">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QLabel" name="description_2">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>描述</string>
+       </property>
+      </widget>
+      <widget class="QPlainTextEdit" name="desc_con_2">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+         <underline>false</underline>
+        </font>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="backgroundVisible">
+        <bool>false</bool>
+       </property>
+       <property name="centerOnScroll">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item row="7" column="2" colspan="2">
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>303</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="1" column="0" colspan="4">
+     <widget class="QSplitter" name="splitter_2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QLabel" name="language_2">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>语言</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="lang_choice_2">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <item>
+        <property name="text">
+         <string>英语en (默认)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>韩语kor</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>泰语th</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>葡萄牙语pt</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>希腊语el</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>保加利亚语bul</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>芬兰语fin</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>斯洛文尼亚slo</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>法语fra</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>阿拉伯语ara</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>德语de</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>荷兰语nl</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>爱沙尼亚语est</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>捷克语cs</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>瑞典语swe</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>越南语vie</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>日语jp</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>西班牙语spa</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>俄语ru</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>意大利语it</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>波兰语pl</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>丹麦语dan</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>罗马尼亚语rom</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>匈牙利语hul</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QCheckBox" name="mainornot_2">
+       <property name="font">
+        <font>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>指定为主要语言</string>
+       </property>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>638</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
