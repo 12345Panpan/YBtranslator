@@ -47,9 +47,7 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def translateGoogle(self, content, toLang):
         fromLang = 'auto'
         q = content
-        # print(q)
         result = translator.translate(q, dest=toLang, src=fromLang).text
-        # print(result)
         return result
 
     def save_csv(self, title, data):
