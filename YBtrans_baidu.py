@@ -30,11 +30,14 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.data = ['', 'no', 'en', '', '', '', '', '', '']
         self.srt_file_name = ''
         self.lang_baidu = ''
+        self.filepath = ''
+        self.title_orign = ''
 
     ####################--slog--#########################
     def Choice_srt(self):  # 选择字幕文件
         # filename要变为self.caption_file
         filename = QFileDialog.getOpenFileName(self, '.srt', 'd:')
+        self.filepath = filename[0]
         filename = filename[0].split('/')[-1]
         self.srt_file_con.setText(filename)
 
@@ -54,7 +57,6 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def translateBaidu(self, content, toLang):
         fromLang = 'auto'
         q = content
-        print(q)
         salt = str(random.randint(32768, 65536))
         sign = appid + content + salt + secretKey
         sign = hashlib.md5(sign.encode("utf-8")).hexdigest()
@@ -96,7 +98,7 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 writer.writerow(data)
 
     def save_srt(self, title, srt_name, language):
-        srt_after_name = title + '_' + language + '.srt'
+        srt_after_name = str(title) + '_' + language + '.srt'
         with open(srt_name, encoding='UTF-8') as file_obj:
             with open(srt_after_name, 'w', encoding='UTF-8') as srt_after:
                 for line in file_obj:
@@ -125,7 +127,7 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
         for item in key_list:
             key_result += self.translateBaidu(item, language)
             key_result += '|'
-            print(key_result)
+            # print(key_result)
         key_result = key_result.rstrip('|')
         return key_result
 
@@ -142,15 +144,13 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.data[2] = lang_baidu[0:2]
 
         # title
+        self.title_orign = self.title_con.text()
         self.data[3] = self.translateBaidu(self.title_con.text(), lang_baidu)
 
         # description 选填
         # print(self.desc_con.toPlainText())
         self.data[4] = self.translateBaidu(self.desc_con.toPlainText(), lang_baidu)
-        # self.data[4] = "你好呀！" \
-        #                "很高兴认识你" \
-        #                "请多指教"
-        # print(self.data[4])
+
         # keywords 选填
         if self.key_con.text() == '':
             self.data[5] = ''
@@ -163,7 +163,7 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
         if srt_file_original == '':
             self.data[6] = ''
         else:
-            self.data[6] = self.save_srt(self.data[3], srt_file_original, lang_baidu)
+            self.data[6] = self.save_srt(self.title_orign, self.filepath, lang_baidu)
 
         # audio_track_file
         if self.audio_file_con == '':
@@ -176,7 +176,6 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.data[8] = self.audio_choice.itemText(audio_index)
         if audio_index == 0:
             self.data[8] = ''
-        # print(self.data)
         self.save_csv(time.strftime('%F'), self.data)
         QMessageBox.information(self, "提示", "翻译文件已生成。")
 
