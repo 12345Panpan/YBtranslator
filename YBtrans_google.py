@@ -23,11 +23,13 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.data = ['', 'no', 'en', '', '', '', '', '', '']
         self.srt_file_name = ''
         self.lang_temp = ''
+        self.filepath = ''
 
     #################--slog--#########################
     def Choice_srt(self):  # 选择字幕文件
         # filename要变为self.caption_file
         filename = QFileDialog.getOpenFileName(self, '.srt', 'd:')
+        self.filepath = filename[0]
         filename = filename[0].split('/')[-1]
         self.srt_file_con.setText(filename)
 
@@ -113,6 +115,7 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.data[2] = lang_temp
 
         # title
+        title_orign = self.title_con.text()
         self.data[3] = self.translateGoogle(self.title_con.text(), lang_temp)
 
         # description 选填
@@ -129,7 +132,7 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
         if srt_file_original == '':
             self.data[6] = ''
         else:
-            self.data[6] = self.save_srt(self.data[3], srt_file_original, lang_temp)
+            self.data[6] = self.save_srt(title_orign, self.filepath, lang_temp)
 
         # audio_track_file
         if self.audio_file_con == '':
