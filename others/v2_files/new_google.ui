@@ -1,0 +1,805 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>531</width>
+    <height>611</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,0,0,0,0">
+    <property name="rightMargin">
+     <number>9</number>
+    </property>
+    <property name="horizontalSpacing">
+     <number>7</number>
+    </property>
+    <property name="verticalSpacing">
+     <number>10</number>
+    </property>
+    <item row="6" column="0">
+     <widget class="QLabel" name="label_6">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>字幕文件</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="2" colspan="4">
+     <widget class="QLineEdit" name="title_con">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2" colspan="4">
+     <widget class="QLineEdit" name="video_id_con">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="2" colspan="4">
+     <widget class="QLineEdit" name="key_con">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>视频ID</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="2">
+     <widget class="QLineEdit" name="audio_file_con">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_4">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>描述</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="2">
+     <widget class="QLineEdit" name="srt_file_con">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="label_5">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>关键字</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>语言</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="0">
+     <widget class="QLabel" name="label_7">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>音频文件</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="2" colspan="4">
+     <widget class="QPlainTextEdit" name="desc_con">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="12" column="0">
+     <widget class="QLabel" name="label_8">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>音频类型</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_3">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>标题</string>
+      </property>
+     </widget>
+    </item>
+    <item row="12" column="2">
+     <widget class="QComboBox" name="audio_choice">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <item>
+       <property name="text">
+        <string>选填</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>localized_audio</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>audio_description</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>commentary</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="9" column="3" colspan="3">
+     <widget class="QPushButton" name="choiceaudio_button_">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>选择文件</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="3" colspan="3">
+     <widget class="QPushButton" name="choicesrt_button">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>选择文件</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2">
+     <widget class="QComboBox" name="lang_choice">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <item>
+       <property name="text">
+        <string>英语en（默认）</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>韩语ko</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>泰语th</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>葡萄牙语pt</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>希腊语el</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>保加利亚语bg</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>芬兰语fi</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>斯洛文尼亚sl</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>法语fr</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>阿拉伯语ar</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>德语de</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>荷兰语nl</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>爱沙尼亚语et</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>捷克语cs</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>瑞典语sv</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>越南语vi</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>日语ja</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>西班牙语es</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>俄语ru</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>意大利语it</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>波兰语pl</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>丹麦语da</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>罗马尼亚语ro</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>匈牙利语hu</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>南非荷兰语af</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>阿尔巴尼亚语sq</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>阿姆哈拉语am</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>亚美尼亚语hy</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>阿塞拜疆az</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>巴斯克eu</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>白俄罗斯语be</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>孟加拉bn</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>波斯尼亚语bs</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>加泰罗尼亚语ca</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>塞布亚诺ceb</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>齐佩瓦语ny</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>科西嘉语co</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>克罗地亚语hr</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>世界语eo</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>菲律宾语tl</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>弗里斯语fy</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>加利西亚语gl</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>乔治亚语ka</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>古吉拉特语gu</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>海地克里奥尔语ht</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>豪萨语ha</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>夏威夷语haw</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>希伯来语iw</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>印地语hi</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>苗语hmn</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>冰岛语is</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>伊博ig</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>印度尼西亚语ud</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>爱尔兰语ga</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>爪哇语jw</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>卡纳达语kn</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>哈萨克语kk</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>高棉语km</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>库尔德语ku</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>吉尔吉斯语ky</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>老挝lo</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>拉丁la</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>拉脱维亚lv</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>立陶宛语lt</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>卢森堡lb</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>马其顿语mk</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>马达加斯加mg</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>马来语ms</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>马拉雅拉姆语ml</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>马耳他语mt</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>毛利语mi</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>马拉地语mr</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>蒙古语mn</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>缅甸my</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>尼泊尔ne</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>挪威语no</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>普什图语ps</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>波斯fa</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>旁遮普语pa</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>萨摩亚语sm</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>苏格兰盖尔语gd</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>塞尔维亚语sr</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>塞索托st</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>肖纳sn</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>信德sd</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>僧伽罗语si</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>斯洛伐克sk</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>索马里so</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>巽他语su</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>斯瓦希里语sw</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>塔吉克tg</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>泰米尔语ta</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>泰卢固语te</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>土耳其语tr</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>乌克兰语uk</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>乌尔都语ur</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>乌兹别克uz</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>威尔士语cy</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>科萨xh</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>意第绪语yi</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>约鲁巴yo</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>祖鲁zu</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>菲律宾fil</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>希伯来语he</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="2" column="3" colspan="2">
+     <widget class="QCheckBox" name="mainornot">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>指定为主要语言</string>
+      </property>
+     </widget>
+    </item>
+    <item row="13" column="5" rowspan="2">
+     <widget class="QPushButton" name="synthetise">
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>翻译生成</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>531</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
