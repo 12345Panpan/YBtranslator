@@ -23,7 +23,7 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.srt_file_name = ''
         self.lang_temp = ''
         self.filepath = ''
-        self.lang_org = 'auto'
+        self.check_status = 'no'
 
     #################--slog--#########################
     def Choice_srt(self):  # 选择字幕文件
@@ -40,14 +40,14 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.audio_file_con.setText(filename)
 
     def CheckBox(self):
-        if self.data[1] == 'no':
-            self.data[1] = 'yes'
+        if self.check_status == 'no':
+            self.check_status = 'yes'
         else:
-            self.data[1] = 'no'
-        print(self.data[1])
+            self.check_status = 'no'
+        print(self.check_status)
 
-    def translateGoogle(self, content, toLang):
-        fromLang = self.lang_org
+    def translateGoogle(self, content, toLang, fromLang):
+        # fromLang = fromLang
         q = content
         result = translator.translate(q, dest=toLang, src=fromLang).text
         return result
@@ -65,13 +65,15 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
             with open(file_name, 'w', encoding='utf-8', newline='') as f:
                 writer = csv.writer(f)
                 writer.writerow(header)
-                writer.writerow(data)
+                for i in range(len(data)):
+                    writer.writerow(data[i])
         else:
             with open(file_name, 'a', encoding='utf-8', newline='') as f:
                 writer = csv.writer(f)
-                writer.writerow(data)
+                for i in range(len(data)):
+                    writer.writerow(data[i])
 
-    def save_srt(self, title, srt_name, language):
+    def save_srt(self, title, srt_name, language, lang_org):
         srt_after_name = title + '_' + language + '.srt'
         with open(srt_name, encoding='UTF-8') as file_obj:
             with open(srt_after_name, 'w', encoding='UTF-8') as srt_after:
@@ -83,7 +85,7 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
                             line = re.sub("<[^>]*>", "", line)
                             line = re.sub("{[^}]*}", "", line)
                             # print(line)
-                            line_after = self.translateGoogle(line, toLang=language)
+                            line_after = self.translateGoogle(line, toLang=language, fromLang=lang_org)
                             # print(line_after)
                             srt_after.writelines(line_after)
                             srt_after.writelines('\n')
@@ -95,71 +97,80 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
                         srt_after.writelines('\n')
         return srt_after_name
 
-    def key_trans(self, key_orign, language):
+    def key_trans(self, key_orign, language, lang_org):
         key_list = re.split('[,]', key_orign)
         key_result = ''
         key_trans = ''
         for item in key_list:
             key_result += item
             key_result += '|'
-            key_trans += self.translateGoogle(item, language)
+            key_trans += self.translateGoogle(item, language, lang_org)
             key_trans += '|'
         key_result += key_trans
         key_result = key_result.rstrip('|')
-        print(key_result)
+        # print(key_result)
         return key_result
 
     def DataSyn(self):
+        lang_list = self.comboBox.Selectlist()
+        lang_num = len(lang_list)
+        self.data = [[0 for col in range(9)] for row in range(lang_num)] #大小为n*m列表
+        for i in range(lang_num):
+            lang_list[i] = re.sub(u"([^\u0041-\u007a])", "", lang_list[i])
+            self.data[i][2] = lang_list[i]
+
         lang_index = self.lang_choice.currentIndex()
-        self.lang_org = self.lang_choice.itemText(lang_index)[2:]
-        # self.lang_org = re.sub(u"([^\u0041-\u007a])", "", self.lang_choice.itemText(lang_index))
-        print(self.lang_org)
+        lang_org = self.lang_choice.itemText(lang_index)[2:]
 
         # video_id
-        self.data[0] = self.video_id_con.text()
-
-        # language
-        # lang_index = self.lang_choice.currentIndex()
-        # lang_temp = re.sub(u"([^\u0041-\u007a])", "", self.lang_choice.itemText(lang_index))
-        # self.data[2] = lang_temp
-        lang_temp = re.sub(u"([^\u0041-\u007a])", "", self.comboBox.Selectlist()[0])
-        print(lang_temp)
+        video_id_temp = self.video_id_con.text()
 
         # title
         title_orign = self.title_con.text()
-        self.data[3] = self.translateGoogle(self.title_con.text(), lang_temp)
+        for i in range(lang_num):
+            self.data[i][3] = self.translateGoogle(self.title_con.text(), lang_list[i], lang_org)
+
 
         # description 选填
         if self.desc_con.toPlainText() == '':
-            self.data[4] = ''
+            for i in range(lang_num): self.data[i][4] = ''
         else:
-            self.data[4] = self.translateGoogle(self.desc_con.toPlainText(), lang_temp)
+            for i in range(lang_num):
+                self.data[i][4] = self.translateGoogle(self.desc_con.toPlainText(), lang_list[i], lang_org)
 
         # keywords 选填
         if self.key_con.text() == '':
-            self.data[5] = ''
+            for i in range(lang_num): self.data[i][5] = ''
         else:
-            self.data[5] = self.key_trans(self.key_con.text(), lang_temp)
+            for i in range(lang_num):
+                self.data[i][5] = self.key_trans(self.key_con.text(), lang_list[i], lang_org)
 
         # caption_file
         srt_file_original = self.srt_file_con.text()
         if srt_file_original == '':
-            self.data[6] = ''
+            for i in range(lang_num): self.data[i][6] = ''
         else:
-            self.data[6] = self.save_srt(title_orign, self.filepath, lang_temp)
+            for i in range(lang_num):
+                self.data[i][6] = self.save_srt(title_orign, self.filepath, lang_list[i], lang_org)
 
         # audio_track_file
         if self.audio_file_con == '':
-            self.data[7] = ''
+            audio_file_con_temp = ''
         else:
-            self.data[7] = self.audio_file_con.text()
+            audio_file_con_temp = self.audio_file_con.text()
 
         # audio_content_type
         audio_index = self.audio_choice.currentIndex()
-        self.data[8] = self.audio_choice.itemText(audio_index)
+        audio_content_type_temp = self.audio_choice.itemText(audio_index)
         if audio_index == 0:
-            self.data[8] = ''
-        # print(self.data)
+            audio_content_type_temp = ''
+        for i in range(lang_num):
+            self.data[i][0] = video_id_temp
+            self.data[i][7] = audio_file_con_temp
+            self.data[i][8] = audio_content_type_temp
+            self.data[i][1] = self.check_status
+
+
         self.save_csv(time.strftime('%F'), self.data)
         QMessageBox.information(self, "提示", "翻译文件已生成。")
 
