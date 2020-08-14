@@ -99,6 +99,8 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def key_trans(self, key_orign, language, lang_org):
         key_list = re.split('[,]', key_orign)
+        if len(key_list) == 1:
+            key_list = re.split(re.compile(r'\，'), key_orign)
         key_result = ''
         key_trans = ''
         for item in key_list:
