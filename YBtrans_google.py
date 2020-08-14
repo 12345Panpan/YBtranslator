@@ -11,7 +11,6 @@ import os
 
 translator = Translator()
 
-
 class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self):
         super(Mywindow, self).__init__()
@@ -24,6 +23,7 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.srt_file_name = ''
         self.lang_temp = ''
         self.filepath = ''
+        self.lang_org = 'auto'
 
     #################--slog--#########################
     def Choice_srt(self):  # 选择字幕文件
@@ -47,7 +47,7 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
         print(self.data[1])
 
     def translateGoogle(self, content, toLang):
-        fromLang = 'auto'
+        fromLang = self.lang_org
         q = content
         result = translator.translate(q, dest=toLang, src=fromLang).text
         return result
@@ -96,30 +96,44 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
         return srt_after_name
 
     def key_trans(self, key_orign, language):
-        key_list = re.split('[|]', key_orign)
+        key_list = re.split('[,]', key_orign)
         key_result = ''
+        key_trans = ''
         for item in key_list:
-            key_result += self.translateGoogle(item, language)
+            key_result += item
             key_result += '|'
-            print(key_result)
+            key_trans += self.translateGoogle(item, language)
+            key_trans += '|'
+        key_result += key_trans
         key_result = key_result.rstrip('|')
+        print(key_result)
         return key_result
 
     def DataSyn(self):
+        lang_index = self.lang_choice.currentIndex()
+        self.lang_org = self.lang_choice.itemText(lang_index)[2:]
+        # self.lang_org = re.sub(u"([^\u0041-\u007a])", "", self.lang_choice.itemText(lang_index))
+        print(self.lang_org)
+
         # video_id
         self.data[0] = self.video_id_con.text()
 
         # language
-        lang_index = self.lang_choice.currentIndex()
-        lang_temp = re.sub(u"([^\u0041-\u007a])", "", self.lang_choice.itemText(lang_index))
-        self.data[2] = lang_temp
+        # lang_index = self.lang_choice.currentIndex()
+        # lang_temp = re.sub(u"([^\u0041-\u007a])", "", self.lang_choice.itemText(lang_index))
+        # self.data[2] = lang_temp
+        lang_temp = re.sub(u"([^\u0041-\u007a])", "", self.comboBox.Selectlist()[0])
+        print(lang_temp)
 
         # title
         title_orign = self.title_con.text()
         self.data[3] = self.translateGoogle(self.title_con.text(), lang_temp)
 
         # description 选填
-        self.data[4] = self.translateGoogle(self.desc_con.toPlainText(), lang_temp)
+        if self.desc_con.toPlainText() == '':
+            self.data[4] = ''
+        else:
+            self.data[4] = self.translateGoogle(self.desc_con.toPlainText(), lang_temp)
 
         # keywords 选填
         if self.key_con.text() == '':
