@@ -106,7 +106,7 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
         for item in key_list:
             key_result += item
             key_result += '|'
-            key_trans += self.translateGoogle(item, language, lang_org)
+            key_trans += self.translateGoogle(item, 'en', lang_org)
             key_trans += '|'
         key_result += key_trans
         key_result = key_result.rstrip('|')
