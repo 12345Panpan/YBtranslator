@@ -119,6 +119,7 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.data = [[0 for col in range(9)] for row in range(lang_num)] #大小为n*m列表
         for i in range(lang_num):
             lang_list[i] = re.sub(u"([^\u0041-\u007a])", "", lang_list[i])
+            if lang_list[i] == 'zhtw': lang_list[i] = 'zh-tw'
             self.data[i][2] = lang_list[i]
 
         lang_index = self.lang_choice.currentIndex()

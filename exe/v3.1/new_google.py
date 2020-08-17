@@ -138,7 +138,7 @@ class Ui_MainWindow(object):
         self.key_con.setObjectName("key_con")
         self.gridLayout.addWidget(self.key_con, 7, 2, 1, 4)
 
-        itemList = ['英语en', '葡萄牙语pt', '希腊语el', '保加利亚语bg', '芬兰语fi', '斯洛文尼亚sl',
+        itemList = ['英语en', '繁体zh-tw', '葡萄牙语pt', '希腊语el', '保加利亚语bg', '芬兰语fi', '斯洛文尼亚sl',
                     '法语fr', '阿拉伯语ar', '德语de', '荷兰语nl', '爱沙尼亚语et', '捷克语cs',
                     '瑞典语sv', '越南语vi', '日语ja', '西班牙语es', '俄语ru', '意大利语it',
                     '波兰语pl', '丹麦语da', '罗马尼亚语ro', '匈牙利语hu', '南非荷兰语af',
