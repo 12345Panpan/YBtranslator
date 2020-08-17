@@ -132,7 +132,6 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
         for i in range(lang_num):
             self.data[i][3] = self.translateGoogle(self.title_con.text(), lang_list[i], lang_org)
 
-
         # description 选填
         if self.desc_con.toPlainText() == '':
             for i in range(lang_num): self.data[i][4] = ''
