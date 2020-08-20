@@ -1,7 +1,0 @@
-video_id,is_primary_language,language,title,description,keywords,caption_file,audio_track_file,audio_content_type
-111,no,en,Hello there,"Hello, what is your name",你好|名字|再见|Hello there|first name|Goodbye,你好_en.srt,yt__________template.csv,
-111,no,pt,Olá,"Olá, qual é o seu nome",你好|名字|再见|Olá|primeiro nome|Adeus,你好_pt.srt,yt__________template.csv,
-111,no,el,Γει? σου,Γεια σα? ποιο ε?ναι το ?νομ? σα?,你好|名字|再见|Γει? σου|?νομα|Αντιο σα?,你好_el.srt,yt__________template.csv,
-111,no,en,Hello there,"Hello, what is your name",浣犲ソ|鍚嶅瓧|鍐嶈|Hello there|first name|Goodbye,浣犲ソ_en.srt,yt__________template.csv,
-111,no,pt,Ol谩,"Ol谩, qual 茅 o seu nome",浣犲ソ|鍚嶅瓧|鍐嶈|Ol谩|primeiro nome|Adeus,浣犲ソ_pt.srt,yt__________template.csv,
-111,no,el,螕蔚喂维 蟽慰蠀,螕蔚喂伪 蟽伪蟼 蟺慰喂慰 蔚委谓伪喂 蟿慰 蠈谓慰渭维 蟽伪蟼,浣犲ソ|鍚嶅瓧|鍐嶈|螕蔚喂维 蟽慰蠀|蠈谓慰渭伪|螒谓蟿喂慰 蟽伪蟼,浣犲ソ_el.srt,yt__________template.csv,
