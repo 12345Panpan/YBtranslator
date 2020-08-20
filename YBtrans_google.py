@@ -84,10 +84,10 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def save_srt(self, title, srt_name, language, lang_org):
         srt_after_name = title + '_' + language + '.srt'
         self.trans = Translator(service_urls=['translate.google.cn'])
-        with open(srt_name, encoding='UTF-8') as file_obj:
+        with open(srt_name, encoding='utf-8') as file_obj:
             self.line_count = len(file_obj.readlines())
-        with open(srt_name, encoding='UTF-8') as file_obj:
-            with open(srt_after_name, 'w', encoding='UTF-8') as srt_after:
+        with open(srt_name, encoding='utf-8') as file_obj:
+            with open(srt_after_name, 'w', encoding='utf-8-sig') as srt_after:
                 self.line_index = 0
                 interval = 4
                 for line in file_obj:
