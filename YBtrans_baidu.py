@@ -1,9 +1,8 @@
-from new_google import Ui_MainWindow
+from new_baidu import Ui_MainWindow
 from googletrans import Translator
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QFileDialog, QInputDialog, QMessageBox, QProgressDialog, QProgressBar, QLineEdit, \
-    QListWidget, QListWidgetItem, QCheckBox
-from new_google import ComboCheckBox
+    QListWidget
 import sys
 import re
 import time
@@ -15,11 +14,13 @@ import json
 import urllib
 import hashlib
 
-_translate = QtCore.QCoreApplication.translate
+
 appid = '20200803000532159'
 secretKey = 'zeBDUeIDBi5p_p0Z68zW'
 httpClient = None
 lang_dict = {'bul': 'bg', 'zh': 'zh-CN', 'est': 'et', 'swe': 'sv', 'jp': 'ja', 'spa': 'es'}
+
+_translate = QtCore.QCoreApplication.translate
 
 
 class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
@@ -33,9 +34,9 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.Preset_show()
         # self._translate = QtCore.QCoreApplication.translate
 
-        self.choice_trans.currentIndexChanged.connect(self.LangList_change)
         for i in range(1, self.comboBox.row_num):
             self.comboBox.qCheckBox[i].stateChanged.connect(self.Main_lang)
+        # self.choice_preset.clicked.connect(self.Preset_show())
         self.choice_preset.currentIndexChanged.connect(self.Lang_set)
 
         self.save_preset.clicked.connect(self.Save_preset)
@@ -51,11 +52,9 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.trans = Translator(service_urls=['translate.google.cn'])
         self.main_lang = ''
         self.lang_select = ''
-        self.preset_num = 0
-        self.trans_method = 'Google'
+
 
     #################--slog--#########################
-
     def Lang_set(self):
         preset_index = self.choice_preset.currentIndex()
         preset_content = self.choice_preset.itemText(preset_index)
@@ -91,19 +90,10 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
                     lines.remove('\n')
             with open(file_name, 'w', encoding='utf-8') as new_file:
                 for line in lines:
-                    # print('line:', line)
-                    # if line != '':
                     if line[0:line.find(',')] != value:
                         new_file.write(line)
                 writer = csv.writer(new_file)
                 writer.writerow(save_list)
-            # with open(file_name, 'r', encoding='utf-8') as this_file:
-            #     thislines = this_file.readlines()
-            #     for line in thislines:
-            #         print('this line is：', line)
-            #     print('lines num is:', len(thislines))
-            self.Preset_show()
-            # self.choice_preset.removeItem(self.choice_preset.count())
 
     def Main_lang(self):
         Outputlist = []
@@ -116,34 +106,22 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.mainornot.setItemText(0, _translate("MainWindow", '指定主要语言'))
         for i in range(len(Outputlist)):
             self.mainornot.addItem("")
-            self.mainornot.setItemText(i + 1, _translate("MainWindow", Outputlist[i]))
-        # self.Preset_show()
+            self.mainornot.setItemText(i+1, _translate("MainWindow", Outputlist[i]))
+        self.Preset_show()
         self.mainornot.setCurrentIndex(self.mainornot.findText(self.main_lang))
 
     def Preset_show(self):
-        for i in range(1, self.choice_preset.count()+1):
-            self.choice_preset.removeItem(i)
-            # print('remove', i)
+        PresetList = []
         if os.path.exists('preset.csv') is True:
             with open('preset.csv', 'r', encoding='utf-8') as f:
                 reader = csv.reader(f)
                 i = 1
                 for row in reader:
                     if row == []:
-                        # print('reach the end')
                         break
-                    # print('preset name is:', row[0])
                     self.choice_preset.addItem("")
-                    # print('add', i)
                     self.choice_preset.setItemText(i, _translate("MainWindow", row[0]))
                     i += 1
-                self.preset_num = i
-            # print(self.choice_preset.count())
-
-            for j in range(i, self.choice_preset.count()+1):
-                self.choice_preset.removeItem(j)
-                # print('resub', j)
-            # print(self.choice_preset.count())
 
     def Choice_srt(self):  # 选择字幕文件
         # filename要变为self.caption_file
@@ -158,83 +136,38 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
         filename = filename[0].split('/')[-1]
         self.audio_file_con.setText(filename)
 
-    def LangList_change(self):
-        trans_index = self.choice_trans.currentIndex()
-        if trans_index == 1:
-            print('yes')
-            self.comboBox.qListWidget.clear()
-            # for i in range(1, 129):
-            #     self.comboBox.removeItem(i)
-            itemList = ['英语en', '韩语kor', '泰语th', '葡萄牙语pt', '希腊语el', '保加利亚语bul', '芬兰语fin',
-                        '斯洛文尼亚slo', '法语fra', '阿拉伯语ara', '德语de', '荷兰语nl', '爱沙尼亚语est',
-                        '捷克语cs', '瑞典语swe', '越南语vie', '日语jp', '西班牙语spa', '俄语ru',
-                        '意大利语it', '波兰语pl', '丹麦语dan', '罗马尼亚语rom', '匈牙利语hul']
-            # j = 1
-            # for item in itemList:
-            #     self.comboBox.addItem("")
-            #     self.comboBox.setItemText(j, _translate("MainWindow", item))
-            #     j += 1
-            self.combpBox = ComboCheckBox(itemList)
-            self.comboBox.setObjectName("comboBox")
-            font = QtGui.QFont()
-            font.setPointSize(10)
-            self.comboBox.setFont(font)
-            self.gridLayout.addWidget(self.comboBox, 3, 2, 1, 1)
-
-            # self.comboBox.items = itemList
-            # for i in range(1, len(itemList)):
-            #     print(i)
-            #     # self.comboBox.qCheckBox.append(QCheckBox())
-            #     # qItem = QListWidgetItem(self.comboBox.qListWidget)
-            #     # self.comboBox.qCheckBox[i].setText(self.comboBox.items[i])
-            #     # self.comboBox.qListWidget.setItemWidget(qItem, self.comboBox.qCheckBox[i])
-            #     self.comboBox.addQCheckBox(i)
-            #     self.comboBox.qCheckBox[i].stateChanged.connect(self.show)
-            # self.comboBox.qCheckBox[0].stateChanged.connect(self.comboBox.All)
-            #
-            # self.comboBox.setModel(self.comboBox.qListWidget.model())
-            # self.comboBox.setView(self.comboBox.qListWidget)
-            # self.comboBox.setLineEdit(self.comboBox.qLineEdit)
-            # self.comboBox.show()
-
-    def translateGoogle(self, content, toLang, fromLang):
+    def translateBaidu(self, content, toLang, fromLang):
         # fromLang = fromLang
         q = content
-        if self.trans_method == 'Google':
-            print("google!")
-            result = self.trans.translate(q, dest=toLang, src=fromLang).text
-            return result
-        elif self.trans_method == 'Baidu':
+        salt = str(random.randint(32768, 65536))
+        sign = appid + content + salt + secretKey
+        sign = hashlib.md5(sign.encode("utf-8")).hexdigest()
+        myurl = '/api/trans/vip/translate' + '?appid=' + appid + '&q=' + urllib.parse.quote(
+            q) + '&from=' + fromLang + '&to=' + toLang + '&salt=' + str(
+            salt) + '&sign=' + sign
+
+        try:
+            httpClient = http.client.HTTPConnection('api.fanyi.baidu.com')
+            httpClient.request('GET', myurl)
+            response = httpClient.getresponse()
+            result_all = response.read().decode('utf-8')
+            result = json.loads(result_all)
+            dst = str(result["trans_result"][0]["dst"])
+            for i in range(1, len(result["trans_result"])):
+                dst += '\n'
+                dst += result["trans_result"][i]["dst"]
+            return dst
+        except Exception as e:
+            print(e)
 
 
-            print("baidu!")
-            salt = str(random.randint(32768, 65536))
-            sign = appid + content + salt + secretKey
-            sign = hashlib.md5(sign.encode("utf-8")).hexdigest()
-            myurl = '/api/trans/vip/translate' + '?appid=' + appid + '&q=' + urllib.parse.quote(
-                q) + '&from=' + fromLang + '&to=' + toLang + '&salt=' + str(salt) + '&sign=' + sign
-            try:
-                httpClient = http.client.HTTPConnection('api.fanyi.baidu.com')
-                httpClient.request('GET', myurl)
-                response = httpClient.getresponse()
-                result_all = response.read().decode('utf-8')
-                result = json.loads(result_all)
-                dst = str(result["trans_result"][0]["dst"])
-                for i in range(1, len(result["trans_result"])):
-                    dst += '\n'
-                    dst += result["trans_result"][i]["dst"]
-                return dst
-            except Exception as e:
-                print(e)
+    def save_csv(self, title, data):
+        # print(time.strftime('%H'))
+        if int(time.strftime('%H')) >= 14:
 
-    def save_csv(self, title, date, data):
-        file_name = date + '-' + title + '.csv'
-        #
-        # if int(time.strftime('%H')) >= 14:
-        #
-        #     file_name = date + 'pm' + '.csv'
-        # else:
-        #     file_name = date + 'am' + '.csv'
+            file_name = title + 'pm' + '.csv'
+        else:
+            file_name = title + 'am' + '.csv'
         if os.path.exists(file_name) is False:
             header = ['video_id', 'is_primary_language', 'language', 'title', 'description', 'keywords', 'caption_file',
                       'audio_track_file', 'audio_content_type']
@@ -282,7 +215,7 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
                             line_after = '\n'
                             # print('line %d is empty' %(self.line_index))
                         else:
-                            line_after = self.translateGoogle(line, toLang=language, fromLang=lang_org) + '\n'
+                            line_after = self.translateBaidu(line, toLang=language, fromLang=lang_org) + '\n'
                         srt_after.writelines(line_after)
                     else:
                         srt_after.writelines(line + '\n')
@@ -299,7 +232,7 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
         for item in key_list:
             key_result += item
             key_result += '|'
-            key_trans += self.translateGoogle(item, 'en', lang_org)
+            key_trans += self.translateBaidu(item, 'en', lang_org)
             key_trans += '|'
         key_result += key_trans
         key_result = key_result.rstrip('|')
@@ -315,8 +248,6 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.progressDialog.setAutoReset(True)
 
     def DataSyn(self):
-        trans_index = self.choice_trans.currentIndex()
-        self.trans_method = self.choice_trans.itemText(trans_index)
 
         lang_select_after = self.comboBox.Selectlist()
         lang_num = len(lang_select_after)
@@ -327,11 +258,6 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
             lang_select_after[i] = re.sub(u"([^\u0041-\u007a])", "", lang_select_after[i])
             if lang_select_after[i] == 'zhtw':
                 lang_select_after[i] = 'zh-tw'
-            if self.trans_method == 'Baidu':
-                if lang_select_after[i] in lang_dict:
-                    lang_select_after[i] = lang_dict[lang_select_after[i]]
-                else:
-                    lang_select_after[i] = lang_select_after[0:2]
             self.data[i][2] = lang_select_after[i]
 
         # print('select lang are:', lang_select_after)
@@ -359,14 +285,14 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
         # title
         title_orign = self.title_con.text()
         for i in range(lang_num):
-            self.data[i][3] = self.translateGoogle(self.title_con.text(), lang_select_after[i], lang_org)
+            self.data[i][3] = self.translateBaidu(self.title_con.text(), lang_select_after[i], lang_org)
 
         # description 选填
         if self.desc_con.toPlainText() == '':
             for i in range(lang_num): self.data[i][4] = ''
         else:
             for i in range(lang_num):
-                self.data[i][4] = self.translateGoogle(self.desc_con.toPlainText(), lang_select_after[i], lang_org)
+                self.data[i][4] = self.translateBaidu(self.desc_con.toPlainText(), lang_select_after[i], lang_org)
 
         # keywords 选填
         if self.key_con.text() == '':
@@ -401,13 +327,9 @@ class Mywindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.data[i][0] = video_id_temp
             self.data[i][7] = audio_file_con_temp
             self.data[i][8] = audio_content_type_temp
+            # self.data[i][1] = self.check_status
 
-        # self.Preset_show()
-        # self.choice_preset.removeItem(self.choice_preset.count())
-        for j in range(self.preset_num, self.choice_preset.count() + 1):
-            self.choice_preset.removeItem(j)
-
-        self.save_csv(title_orign, time.strftime('%F'), self.data)
+        self.save_csv(time.strftime('%F'), self.data)
         QMessageBox.information(self, "提示", "翻译文件已生成。")
 
 

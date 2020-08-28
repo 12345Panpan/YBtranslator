@@ -141,36 +141,15 @@ class Ui_MainWindow(object):
         self.key_con.setObjectName("key_con")
         self.gridLayout.addWidget(self.key_con, 7, 2, 1, 4)
 
-        itemList = ['英语en', '繁体zh-tw', '葡萄牙语pt', '希腊语el', '保加利亚语bg', '芬兰语fi', '斯洛文尼亚sl',
-                    '法语fr', '阿拉伯语ar', '德语de', '荷兰语nl', '爱沙尼亚语et', '捷克语cs',
-                    '瑞典语sv', '越南语vi', '日语ja', '西班牙语es', '俄语ru', '意大利语it',
-                    '波兰语pl', '丹麦语da', '罗马尼亚语ro', '匈牙利语hu', '南非荷兰语af',
-                    '阿尔巴尼亚语sq', '阿姆哈拉语am', '亚美尼亚语hy', '阿塞拜疆az', '巴斯克eu',
-                    '白俄罗斯语be', '孟加拉bn', '波斯尼亚语bs', '加泰罗尼亚语ca', '塞布亚诺ceb',
-                    '齐佩瓦语ny', '科西嘉语co', '克罗地亚语hr', '世界语eo', '菲律宾语tl',
-                    '弗里斯语fy', '加利西亚语gl', '乔治亚语ka', '古吉拉特语gu', '海地克里奥尔语ht',
-                    '豪萨语ha', '夏威夷语haw', '希伯来语iw', '印地语hi', '苗语hmn', '冰岛语is',
-                    '伊博ig', '印度尼西亚语ud', '爱尔兰语ga', '爪哇语jw', '卡纳达语kn',
-                    '哈萨克语kk', '高棉语km', '库尔德语ku', '吉尔吉斯语ky', '老挝lo', '拉丁la',
-                    '拉脱维亚lv', '立陶宛语lt', '卢森堡lb', '马其顿语mk', '马达加斯加mg',
-                    '马来语ms', '马拉雅拉姆语ml', '马耳他语mt', '毛利语mi', '马拉地语mr',
-                    '蒙古语mn', '缅甸my', '尼泊尔ne', '挪威语no', '普什图语ps', '波斯fa',
-                    '旁遮普语pa', '萨摩亚语sm', '苏格兰盖尔语gd', '塞尔维亚语sr', '塞索托st',
-                    '肖纳sn', '信德sd', '僧伽罗语si', '斯洛伐克sk', '索马里so', '巽他语su',
-                    '斯瓦希里语sw', '塔吉克tg', '泰米尔语ta', '泰卢固语te', '土耳其语tr',
-                    '乌克兰语uk', '乌尔都语ur', '乌兹别克uz', '威尔士语cy', '科萨xh', '意第绪语yi',
-                    '约鲁巴yo', '祖鲁zu', '菲律宾fil', '希伯来语he']
+        itemList = ['英语en', '韩语kor', '泰语th', '葡萄牙语pt', '希腊语el', '保加利亚语bul', '芬兰语fin',
+                    '斯洛文尼亚slo', '法语fra', '阿拉伯语ara', '德语de', '荷兰语nl', '爱沙尼亚语est',
+                    '捷克语cs', '瑞典语swe', '越南语vie', '日语jp', '西班牙语spa', '俄语ru',
+                    '意大利语it', '波兰语pl', '丹麦语dan', '罗马尼亚语rom', '匈牙利语hul']
         self.comboBox = ComboCheckBox(itemList)
         self.comboBox.setObjectName("comboBox")
         font = QtGui.QFont()
         font.setPointSize(10)
         self.comboBox.setFont(font)
-
-        # for i in range(10):
-        #     self.comboBox.addItem("")
-        #     item = self.comboBox.model().item(i, 0)
-        #     item.setCheckState(QtCore.Qt.Unchecked)
-
         self.gridLayout.addWidget(self.comboBox, 3, 2, 1, 1)
         self.synthetise = QtWidgets.QPushButton(self.centralwidget)
         font = QtGui.QFont()
@@ -268,13 +247,6 @@ class Ui_MainWindow(object):
         self.preset_label.setObjectName("preset_label")
         self.gridLayout.addWidget(self.preset_label, 4, 0, 1, 1)
 
-        self.choice_trans = QtWidgets.QComboBox(self.centralwidget)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.choice_trans.setFont(font)
-        self.choice_trans.addItem("")
-        self.choice_trans.addItem("")
-        self.gridLayout.addWidget(self.choice_trans, 1, 3, 2, 1)
 
         self.title_con = QtWidgets.QLineEdit(self.centralwidget)
         font = QtGui.QFont()
@@ -305,7 +277,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "YBtrans"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label_2.setText(_translate("MainWindow", "语言"))
         self.audio_choice.setItemText(0, _translate("MainWindow", "选填"))
         self.audio_choice.setItemText(1, _translate("MainWindow", "localized_audio"))
@@ -332,6 +304,3 @@ class Ui_MainWindow(object):
         self.lang_choice.setItemText(1, _translate("MainWindow", "汉语zh-cn"))
         self.lang_choice.setItemText(2, _translate("MainWindow", "英语en"))
         self.choice_preset.setItemText(0, _translate("MainWindow", "请选择预设"))
-        self.choice_trans.setItemText(0, _translate("MainWindow", "Google"))
-        self.choice_trans.setItemText(1, _translate("MainWindow", "Baidu"))
-
